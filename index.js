@@ -27,6 +27,14 @@ if (token) {
   require('beepboop-botkit').start(controller, { debug: true })
 }
 
+controller.hears('.*', ['direct_message'], function (bot, message) {
+  console.log(message.user + ' say ' + message.text)
+
+
+})
+
+
+
 controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
 })
