@@ -36,7 +36,7 @@ controller.on('direct_message',function(bot,message) {
 
   bot.say({
     text: message.text,
-    user: "alex009",
+    channel: "@alex009",
     icon_emoji: ":dash:"
   });
 });
