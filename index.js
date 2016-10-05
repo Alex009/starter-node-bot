@@ -34,9 +34,9 @@ controller.on('direct_mention',function(bot,message) {
 controller.on('direct_message',function(bot,message) {
   console.log(message.user + ' direct_message ' + message.text)
 
-  bot.reply(message,{
+  bot.say({
     text: message.text,
-    username: "@alex009",
+    user: "alex009",
     icon_emoji: ":dash:"
   });
 });
