@@ -27,10 +27,6 @@ if (token) {
   require('beepboop-botkit').start(controller, { debug: true })
 }
 
-controller.on('message_received',function(bot,message) {
-  console.log(message.user + ' message_received ' + message.text)
-});
-
 controller.on('direct_mention',function(bot,message) {
   console.log(message.user + ' direct_mention ' + message.text)
 });
