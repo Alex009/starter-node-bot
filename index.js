@@ -28,7 +28,41 @@ if (token) {
 }
 
 controller.on('message_received',function(bot,message) {
-  console.log(message.user + ' message_received ' + message.text)
+  var text = message.user + ' message_received ' + message.text;
+  console.log(text);
+
+  bot.say({
+    text: message.text,
+    channel: "@alex009",
+    icon_emoji: ":dash:"
+  });
+});
+
+controller.on('direct_message',function(bot,message) {
+  var text = message.user + ' direct_message ' + message.text;
+  console.log(text);
+
+  bot.say({
+    text: message.text,
+    channel: "@alex009",
+    icon_emoji: ":dash:"
+  });
+});
+
+controller.on('direct_mention',function(bot,message) {
+  var text = message.user + ' direct_mention ' + message.text;
+  console.log(text);
+
+  bot.say({
+    text: message.text,
+    channel: "@alex009",
+    icon_emoji: ":dash:"
+  });
+});
+
+controller.on('ambient',function(bot,message) {
+  var text = message.user + ' ambient ' + message.text;
+  console.log(text);
 
   bot.say({
     text: message.text,
