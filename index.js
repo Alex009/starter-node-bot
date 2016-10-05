@@ -11,7 +11,7 @@ const slackBot = new Bot({
 });
 
 slackBot.on('message', function (data) {
-  var message = "message: " + data;
+  var message = "message: " + JSON.stringify(data);
   console.log(message);
   slackBot.postMessage("alex009", message);
 });
