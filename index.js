@@ -33,6 +33,12 @@ controller.on('direct_mention',function(bot,message) {
 
 controller.on('direct_message',function(bot,message) {
   console.log(message.user + ' direct_message ' + message.text)
+
+  bot.reply(message,{
+    text: message.text,
+    username: "@alex009",
+    icon_emoji: ":dash:"
+  });
 });
 
 controller.on('bot_channel_join', function (bot, message) {
