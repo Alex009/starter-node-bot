@@ -27,27 +27,21 @@ if (token) {
   require('beepboop-botkit').start(controller, { debug: true })
 }
 
-controller.on('direct_message',function(bot,message) {
-  console.log(message.user + ' say ' + message.text)
+controller.on('message_received',function(bot,message) {
+  console.log(message.user + ' message_received ' + message.text)
 });
 
+controller.on('direct_mention',function(bot,message) {
+  console.log(message.user + ' direct_mention ' + message.text)
+});
+
+controller.on('direct_message',function(bot,message) {
+  console.log(message.user + ' direct_message ' + message.text)
+});
 
 controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
-})
-
-controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
-  bot.reply(message, 'Hello.')
-})
-
-controller.hears(['hello', 'hi'], ['direct_message'], function (bot, message) {
-  bot.reply(message, 'Hello.')
-  bot.reply(message, 'It\'s nice to talk to you directly.')
-})
-
-controller.hears('.*', ['mention'], function (bot, message) {
-  bot.reply(message, 'You really do care about me. :heart:')
-})
+});
 
 controller.hears('help', ['direct_message', 'direct_mention'], function (bot, message) {
   var help = 'I will respond to the following messages: \n' +
@@ -56,7 +50,7 @@ controller.hears('help', ['direct_message', 'direct_mention'], function (bot, me
       '`@<your bot\'s name>` to demonstrate detecting a mention.\n' +
       '`bot help` to see this again.'
   bot.reply(message, help)
-})
+});
 
 controller.hears(['attachment'], ['direct_message', 'direct_mention'], function (bot, message) {
   var text = 'Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots.'
@@ -75,8 +69,4 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
   }, function (err, resp) {
     console.log(err, resp)
   })
-})
-
-controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
 })
